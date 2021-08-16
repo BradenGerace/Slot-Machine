@@ -26,7 +26,7 @@ public class Row : MonoBehaviour
     private IEnumerator Rotate()
     {
         rowStopped = false;
-        timeInterval = 0.025f;
+        timeInterval = 0.005f;
 
         for (int i = 0; i < 30; i++)
         {
@@ -63,23 +63,54 @@ public class Row : MonoBehaviour
 
             if (i > Mathf.RoundToInt(randomValue * .25f))
             {
-                timeInterval = 0.05f;
+                timeInterval = 0.02f;
             }
             if (i > Mathf.RoundToInt(randomValue * .5f))
             {
-                timeInterval = 0.1f;
+                timeInterval = 0.04f;
             }
             if (i > Mathf.RoundToInt(randomValue * .75f))
             {
-                timeInterval = 0.15f;
+                timeInterval = 0.06f;
             }
             if (i > Mathf.RoundToInt(randomValue * .95f))
             {
-                timeInterval = 0.2f;
+                timeInterval = 0.08f;
             }
 
             yield return new WaitForSeconds(timeInterval);
         }
+
+        if (transform.position.y == -3.5f)
+        {
+            stoppedSlot = "Diamond";
+        }
+        else if (transform.position.y == -2.75f)
+        {
+            stoppedSlot = "Crown";
+        }
+        else if (transform.position.y == -2f)
+        {
+            stoppedSlot = "Melon";
+        }
+        else if (transform.position.y == -1.25f)
+        {
+            stoppedSlot = "Bar";
+        }
+        else if (transform.position.y == -.5f)
+        {
+            stoppedSlot = "Seven";
+        }
+        else if (transform.position.y == .25f)
+        {
+            stoppedSlot = "Lemon";
+        }
+        else if (transform.position.y == 1.75f)
+        {
+            stoppedSlot = "Diamond";
+        }
+        
+        rowStopped = true;
     }
 
     private void OnDestroy()

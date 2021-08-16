@@ -19,9 +19,7 @@ public class GameControl : MonoBehaviour
 
     private int prizeValue;
 
-    private bool resultsChecked = false;
-
-    
+    private bool resultsChecked = false;   
 
     // Update is called once per frame
     void Update()
@@ -51,18 +49,18 @@ public class GameControl : MonoBehaviour
 
     private IEnumerator PullHandle()
     {
-        for (int i = 0; i < 15; i+= 5)
+        for (int i = 0; i < 8; i += 1)
         {
-            handle.Rotate(0f, 0f, -i);
-            yield return new WaitForSeconds(0.1f);
+            handle.Rotate(0f, 0f, i);
+            yield return new WaitForSeconds(0.04f);
         }
 
         HandlePulled();
 
-        for (int i = 0; i < 15; i+= 5)
+        for (int i = 0; i < 8; i+= 1)
         {
             handle.Rotate(0f, 0f, -i);
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.04f);
         }
     }
 
@@ -115,6 +113,55 @@ public class GameControl : MonoBehaviour
             && rows[2].stoppedSlot == "Lemon")
         {
             prizeValue = 5000;
+        }
+
+        else if (((rows[0].stoppedSlot == rows[1].stoppedSlot) && (rows[0].stoppedSlot == "Diamond"))
+            || ((rows[0].stoppedSlot == rows[2].stoppedSlot) && (rows[0].stoppedSlot == "Diamond"))
+            || ((rows[1].stoppedSlot == rows[2].stoppedSlot) && (rows[1].stoppedSlot == "Diamond")))
+        {
+            prizeValue = 100;
+        }
+
+        else if (((rows[0].stoppedSlot == rows[1].stoppedSlot) && (rows[0].stoppedSlot == "Crown"))
+            || ((rows[0].stoppedSlot == rows[2].stoppedSlot) && (rows[0].stoppedSlot == "Crown"))
+            || ((rows[1].stoppedSlot == rows[2].stoppedSlot) && (rows[1].stoppedSlot == "Crown")))
+        {
+            prizeValue = 300;
+        }
+
+        else if (((rows[0].stoppedSlot == rows[1].stoppedSlot) && (rows[0].stoppedSlot == "Melon"))
+            || ((rows[0].stoppedSlot == rows[2].stoppedSlot) && (rows[0].stoppedSlot == "Melon"))
+            || ((rows[1].stoppedSlot == rows[2].stoppedSlot) && (rows[1].stoppedSlot == "Melon")))
+        {
+            prizeValue = 500;
+        }
+
+        else if (((rows[0].stoppedSlot == rows[1].stoppedSlot) && (rows[0].stoppedSlot == "Bar"))
+            || ((rows[0].stoppedSlot == rows[2].stoppedSlot) && (rows[0].stoppedSlot == "Bar"))
+            || ((rows[1].stoppedSlot == rows[2].stoppedSlot) && (rows[1].stoppedSlot == "Bar")))
+        {
+            prizeValue = 700;
+        }
+
+        else if (((rows[0].stoppedSlot == rows[1].stoppedSlot) && (rows[0].stoppedSlot == "Seven"))
+            || ((rows[0].stoppedSlot == rows[2].stoppedSlot) && (rows[0].stoppedSlot == "Seven"))
+            || ((rows[1].stoppedSlot == rows[2].stoppedSlot) && (rows[1].stoppedSlot == "Seven")))
+        {
+            prizeValue = 1000;
+        }
+
+        else if (((rows[0].stoppedSlot == rows[1].stoppedSlot) && (rows[0].stoppedSlot == "Cherry"))
+            || ((rows[0].stoppedSlot == rows[2].stoppedSlot) && (rows[0].stoppedSlot == "Cherry"))
+            || ((rows[1].stoppedSlot == rows[2].stoppedSlot) && (rows[1].stoppedSlot == "Cherry")))
+        {
+            prizeValue = 2000;
+        }
+
+        else if (((rows[0].stoppedSlot == rows[1].stoppedSlot) && (rows[0].stoppedSlot == "Lemon"))
+            || ((rows[0].stoppedSlot == rows[2].stoppedSlot) && (rows[0].stoppedSlot == "Lemon"))
+            || ((rows[1].stoppedSlot == rows[2].stoppedSlot) && (rows[1].stoppedSlot == "Lemon")))
+        {
+            prizeValue = 4000;
         }
 
         resultsChecked = true;
